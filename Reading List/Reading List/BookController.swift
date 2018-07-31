@@ -93,10 +93,10 @@ class BookController{
         return documentDir.appendingPathComponent(filename)
     }
     
-    private var readBooks: [Book]{
+    var readBooks: [Book]{
         return books.filter{$0.hasBeenRead == true }
     }
-    private var unreadBooks: [Book]{
+    var unreadBooks: [Book]{
         return books.filter{$0.hasBeenRead == false}
     }
     

@@ -2,7 +2,7 @@
 //  BookDetailViewController.swift
 //  Reading List
 //
-//  Created by Andrew Dhan on 7/31/18.
+//  Created by Andrew Liao on 7/31/18.
 //  Copyright © 2018 Lambda School. All rights reserved.
 //
 
