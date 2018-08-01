@@ -37,10 +37,10 @@ class BookDetailViewController: UIViewController {
             bookController?.updateBook(originalBook: book, newTitle: title, newReason: reason)
         } else {
             bookController?.createBook(withTitle: title, reasonToRead: reason)
-            print("create")
+
         }
         navigationController?.popViewController(animated: true)
-        print(bookController?.books.count)
+
     }
     
     var book:Book?

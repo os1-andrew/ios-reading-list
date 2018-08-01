@@ -12,6 +12,8 @@ class ReadingListTableViewController: UITableViewController, BookTableViewCellDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bookController.loadFromPersistentStore()
+        tableView.reloadData()
         
     }
     override func viewWillAppear(_ animated: Bool) {
