@@ -12,13 +12,16 @@ class ReadingListTableViewController: UITableViewController, BookTableViewCellDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     func toggleHasBeenRead(for cell: BookTableViewCell) {
-        guard let indexPath = tableView.indexPathForSelectedRow else {return}
-        let book = bookFor(indexPath: indexPath)
-        bookController.updateHasBeenRead(for: book)
+        cell.book = bookController.updateHasBeenRead(for: cell.book!)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -34,10 +37,9 @@ class ReadingListTableViewController: UITableViewController, BookTableViewCellDe
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return bookController.readBooks.count
-        } else if section == 1{
+        } else{
             return bookController.unreadBooks.count
         }
-        return bookController.books.count
     }
 
 
@@ -57,7 +59,7 @@ class ReadingListTableViewController: UITableViewController, BookTableViewCellDe
         }
     }
     //MARK: - Helper Function
-    func bookFor(indexPath: IndexPath) -> Book{
+    private func bookFor(indexPath: IndexPath) -> Book{
         if indexPath.section == 0{
             return bookController.readBooks[indexPath.row]
         } else {
@@ -68,10 +70,17 @@ class ReadingListTableViewController: UITableViewController, BookTableViewCellDe
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        guard let destinationVC = segue.destination as? BookDetailViewController else {return}
+        
+        
+        if segue.identifier == "AddBook" {
+            destinationVC.bookController = bookController
+        } else if segue.identifier == "ViewDetails" {
+            guard let indexPath = tableView.indexPathForSelectedRow else {return}
+            destinationVC.bookController = bookController
+            destinationVC.book = bookFor(indexPath: indexPath)
+        }
     }
 
     //Mark: - Properties

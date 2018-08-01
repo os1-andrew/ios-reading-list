@@ -66,17 +66,17 @@ class BookController{
 //        temp.reasonToRead = reason
 //        books.remove(at: index)
 //        books.insert(temp, at: index)
+        
         saveToPersistentStore()
     }
     
-    func updateHasBeenRead(for book:Book ){
-        guard let index = books.index(of: book) else {return}
-        if books[index].hasBeenRead{
-            books[index].hasBeenRead = false
-        } else {
-            books[index].hasBeenRead = true
-        }
+    func updateHasBeenRead(for book:Book ) -> Book?{
+        guard let index = books.index(of: book) else {return nil}
+       
+        books[index].hasBeenRead = !books[index].hasBeenRead
+        
         saveToPersistentStore()
+        return books[index]
     }
     
     //Mark: - Computed Properties

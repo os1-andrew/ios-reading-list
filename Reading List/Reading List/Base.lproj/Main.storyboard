@@ -60,7 +60,7 @@
                                 <connections>
                                     <outlet property="bookTitleLabel" destination="boE-g1-hgc" id="X7c-Go-BYI"/>
                                     <outlet property="checkBoxButton" destination="k9R-xm-3eo" id="B1e-S8-noq"/>
-                                    <segue destination="I5p-sI-QfP" kind="show" identifier="AddBook" id="Avh-FO-cDm"/>
+                                    <segue destination="I5p-sI-QfP" kind="show" identifier="ViewDetails" id="Avh-FO-cDm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,7 +72,7 @@
                     <navigationItem key="navigationItem" title="Reading List" id="iqA-lV-WuL">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3Xl-f8-uRi">
                             <connections>
-                                <segue destination="I5p-sI-QfP" kind="show" id="uki-7G-J8K"/>
+                                <segue destination="I5p-sI-QfP" kind="show" identifier="AddBook" id="uki-7G-J8K"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -152,6 +152,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Avh-FO-cDm"/>
+        <segue reference="uki-7G-J8K"/>
     </inferredMetricsTieBreakers>
 </document>

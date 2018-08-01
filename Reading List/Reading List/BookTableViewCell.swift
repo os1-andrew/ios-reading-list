@@ -26,6 +26,7 @@ class BookTableViewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
 
     @IBOutlet weak var checkBoxButton: UIButton!
+    
     weak var delegate: BookTableViewCellDelegate?
     
     var book: Book?{
